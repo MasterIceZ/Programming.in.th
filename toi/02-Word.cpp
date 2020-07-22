@@ -13,85 +13,72 @@ using namespace std;
 #define r4j {0,0,-1,1}
 #define r8i {-1,-1,-1,0,0,1,1,1}
 #define r8j {-1,0,1,-1,1,-1,0,1}
-#define low tolower
+#define change tolower
 
-int n,m,len;
-int di[] = r8i;
-int dj[] = r8j;
-char a[50][50];
+char a[30][30];
+int n,m,len,k;
 char want[110];
-bool check;
+bool Check;
 
-void play (int i,int j,int state); 
+int di[] = {-1,-1,-1,0,0,1,1,1};
+int dj[] = {-1,0,1,-1,1,-1,0,1};
 
-int main ()
-{
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	int i,j,k;
-	cin >> n >> m;
-	f0(i,0,n)
-	{
-		f0(j,0,m)
-		{
-			cin >> a[i][j];
-			a[i][j] = low(a[i][j]);
-		}
-	}
-	cin >> k;
-	while(k--)
-	{
-		cin >> want;
-	       	len = strlen(want);
-		check = false;
-		f0(i,0,len)
-		{
-			want[i] = low(want[i]);	
-		}
-		f0(i,0,n)
-		{
-			f0(j,0,m)
-			{
-				if(a[i][j]==want[0])
-				{
-					play(i,j,0);
-					if(check)
-					{
-						cout << i << " " << j << endl;
-						break;
-					}
-				}
-			}
-			if(check)
-			{
-				break;
-			}
-		}	
-	}
+void play (int i,int j,int state) {
+    int ii,jj;
+    if(Check){
+        return ;
+    }
+    if(state==len-1) {
+        Check = true;
+        return ;
+        }
+    ii = di[k] + i;
+    jj = dj[k] + j;
+    if(ii>=n||ii<0||jj>=m||jj<0) {
+        return ;
+        }
+    if(a[ii][jj]==want[state+1]) {
+        play(ii,jj,state+1);
+        }
+    }
 
-	return 0;
-}
+int main () {
+    int q,i,j;
+    cin >> n >> m;
+    for(i=0; i<n; i++) {
+        for(j=0; j<m; j++) {
+            cin >> a[i][j];
+            a[i][j] = change(a[i][j]);
+            }
+        }
+    cin >> q;
+    while(q--) {
+        cin >> want;
+        len = strlen(want);
+        Check = false;
+        for(i=0; i<len; i++) {
+            want[i] = change(want[i]);
+            }
+        for(i=0; i<n; i++) {
+            for(j=0; j<m; j++) {
+                if(a[i][j]==want[0]) {
+                    for(k=0; k<8; k++) {
+                        play(i,j,0);
+                    }
+                    if(Check){
+                        cout << i << " " << j << endl;
+                        break;
+                    }
+                }
+                if(Check){
+                    break;
+                }
+            }
+            if(Check){
+                break;
+            }
+        }
+    }
+    return 0;
+    }
 
-void play(int i,int j,int state)
-{
-	int ii,jj,k;
-	if(state==len-1)
-	{
-		check = true;
-		return ;
-	}	
-	f0(k,0,8)
-	{
-		ii = di[k] + i;
-		jj = dj[k] + j;
-		if(ii>=n||ii<0||jj>=m||jj<0)
-		{
-			continue;
-		}
-		if(a[i][j]!=want)
-		{
-			continue;
-		}
-		play(ii,jj,state+1);
-	}
-}
