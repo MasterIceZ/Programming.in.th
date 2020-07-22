@@ -5,6 +5,7 @@
 using namespace std;
 #define ll long long
 #define us unsigned
+#define pii pair<int,int>
 #define f0(a,b,c) for(a=b;b<c;a++)
 #define f1(a,b,c) for(a=b;b<=c;a++)
 #define f2(a,b,c) for(a=b;a>c;a--)

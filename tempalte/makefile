@@ -6,5 +6,5 @@ clean :
 	rm test
 	clear
 up :
-	git remote add origin git@github.com:MasterIceZ/Programming.in.th.git
+	#git remote add origin git@github.com:MasterIceZ/Programming.in.th.git
 	git push -u origin master	
