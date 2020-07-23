@@ -15,32 +15,21 @@ using namespace std;
 #define r8j {-1,0,1,-1,1,-1,0,1}
 
 int food[] = {1,2,3,4,5,6,7,8};
-bool can[10] = {false}; 
-
-int main ()
-{
-	ios_base::sync_with_stdio(0);
-	cin.tie(0);
-	
-	int num,n,m,i;
-	cin >> n;
-	cin >> m;
-	f0(i,0,m)
-	{
-		cin >> num;
-		can[num] = true;
-	}
-	do
-	{
-		if(can[food[0]]==false)
-		{
-			f0(i,0,n)
-			{
-				printf("%d ",food[i]);
-			}
-			cout << endl;
-		}
-	}while(next_permutation(food,food+n));
-
-	return 0;
+bool cannot[10] ={false};
+int main (){
+    int n,m,num,i;
+    cin >> n;
+    cin >> m;
+    for(i=0;i<m;i++){
+        scanf("%d",&num);
+        cannot[num] = true ;
+    }
+    do{
+        if(cannot[food[0]]==false){
+            for(i=0;i<n;i++)
+                cout << food[i] << " ";
+            cout << endl;
+        }
+    }while(next_permutation(food,food+n));
+    return 0;
 }
