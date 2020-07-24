@@ -16,7 +16,7 @@ using namespace std;
 #define pb push_back
 
 vector <int> prime;
-const int MxN = 7e7;
+const int MxN = 1e7;
 bool isPrime[MxN+10];
 
 int main ()
@@ -32,7 +32,7 @@ int main ()
 		{
 			continue;
 		}
-		for(j=i*i;j<=sqrt(MxN);j+=i)
+		for(j=i*i;j<=MxN;j+=i)
 		{
 			isPrime[j] = true;
 		}
