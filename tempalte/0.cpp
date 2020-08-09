@@ -45,13 +45,19 @@ void solution()
 	return ;
 }
 
+void debug()
+{
+
+	return ;
+}
+
 int main ()
 {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
 	int q;
-	cin >> q;
-	//q = 1
+	//cin >> q;
+	//q = 1;
 	while(q--)
 	{
 		solution();
