@@ -38,39 +38,31 @@ using namespace std;
 const int d4i[] = r4i,d4j[] = r4j;
 const int d8i[] = r8i,d8j[] = r8j;
 
-vector <ll> tail;
+ll tail[1000100];
 
 void solution()
 {
-	ll i;
-	ll a,n;
-       	ll cnt;
-	ll num;
-	cnt = 0;
+	ll n,i,num,a,ans;
 	cin >> n;
-	f0(i,0,n)
+	for(i=0;i<n;i++)
 	{
 		cin >> num;
 		tail[num]++;
 	}
 	cin >> a;
-	f1(i,0,a/2)
+	ans = 0;
+	for(i=0;i<=a/2;i++)
 	{
-		if(a-i > INF)
-		{
-			continue;
-		}
 		if(a-i==i)
-		{		
-			cnt += ((tail[i]*(tail[i]-1))/2);
-		}	
+		{
+			ans += tail[i]*(tail[i]-1)/2;
+		}
 		else
 		{
-			cnt += (tail[i]*(tail[a-i])); 
+			ans += tail[i]*tail[a-i];
 		}
 	}
-	cout << cnt;
-
+	cout << ans << endl;
 	return ;
 }
 
