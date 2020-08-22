@@ -13,43 +13,76 @@ using namespace std;
 #define r4j {0,0,-1,1}
 #define r8i {-1,-1,-1,0,0,1,1,1}
 #define r8j {-1,0,1,-1,1,-1,0,1}
-
+#define endl "\n"
 #define pb push_back
 
-vector <int> row;
+queue <int> classrow;
+queue <int> student[11];
+
+int mark[11];
+
+int stu[10010];
 
 int main ()
 {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	
-	int i,j,n,m,num1,num2;
+
+	int i,j,n,m,num1,num2,num;
 	cin >> n >> m;
-	f0(i,0,m)
+	for(i=0;i<m;i++)
 	{
 		cin >> num1 >> num2;
+		stu[num2] = num1;
 	}
 	char opr;
-	while(1){
+	while(1)
+	{
 		cin >> opr;
-		switch(opr)
+		if(opr=='X')
 		{
-			case 'X' :
-				cout << "0" << endl;
-				return 0;
-			case 'E' :
-				cin >> num1;
-				row.pb(num1);
-			case 'D' :
-				if(!row.empty())
-				{
-					cout << row.begin();
-					row.pop();
-				}
-				else
-				{
-					cout << "empty" << endl;
-				}
+			cout << "0" << endl;
+			break;
+		}
+		if(opr=='E')
+		{
+			cin >> num;
+			if(student[stu[num]].empty())
+            {
+                classrow.push(stu[num]);
+            }
+			student[stu[num]].push(num);
+			// insert class queue
+			// classrow.push(stu[num]);
+			/*
+			if(classrow[stu[num]].empty())
+			{
+				classrow.push(stu[num]);
+			}
+			*/
+		}
+		if(opr=='D')
+		{
+			//cin >> num;
+			if(classrow.empty())
+			{
+				cout << "empty" << endl;
+			}
+			else
+			{
+				/*
+				 * Check Classrow
+				 * print(stdudent[Classrow.front()].front)
+				 * student[Classrow.front()].pop()
+				 * break
+				 * */
+				cout << student[classrow.front()].front() << endl;
+				student[classrow.front()].pop();
+				if(student[classrow.front()].empty())
+                {
+                    classrow.pop();
+                }
+			}
 		}
 	}
 	return 0;

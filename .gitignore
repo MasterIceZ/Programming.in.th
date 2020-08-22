@@ -1,0 +1,6 @@
+
+*.in
+*.out
+*.o
+*.exe
+codecube/test

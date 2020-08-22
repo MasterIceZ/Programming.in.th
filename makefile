@@ -1,2 +1,2 @@
 all :
-	cp -r tempalte/ newdir
+	cp -r tempalte/ 00_Series

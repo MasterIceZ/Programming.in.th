@@ -34,41 +34,37 @@ using namespace std;
 #define out cout
 #define ld long double
 
-#define space " "
-#define endl '\n'
-
 const int d4i[] = r4i,d4j[] = r4j;
 const int d8i[] = r8i,d8j[] = r8j;
 
-void solution ()
+void solution()
 {
-	int i,j;
-	int w,h,n,num,a,b;
-	cin >> w >> h >> n;
-	int ans1,ans2;
-	ans1 = 0;
-	ans2 = 0;
-	array <int,3030> filter;
-	for(i=0;i<n;i++)
-	{
-		cin >> a >> b;
-		for(j=a;j<b+a && j<w;j++)
-		{
-			filter[j]++;
-		}
+	//R >> P >> S
+	int i;
+	int a,b,c;
+	cin >> a >> b >> c;
+	bool mark;
+	if(a>0&&b>0&&c>0)
+	{	
+		mark=true;
 	}
-	for(i=0;i<w;i++)
+	else if(a==1&&c==0)
 	{
-		if(filter[i]==0)
-		{
-			ans1+=h;
-		}
-		else if(filter[i]==1)
-		{
-			ans2+=h;
-		}
+		mark = true;
 	}
-	cout << ans1 << space << ans2 << endl;
+	else if(b==1&&a==0)
+	{
+		mark = true;
+	}
+	else if(c==1&&b==0)
+	{
+		mark = true;
+	}
+	else
+	{
+		mark = false;
+	}
+	cout << (mark?"YES":"NO") << endl;
 	return ;
 }
 
@@ -76,13 +72,13 @@ int main ()
 {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	
 	int q;
-	//cin >> q;
-	q=1;
+	cin >> q;
+	//q = 1;
 	while(q--)
 	{
 		solution();
 	}
+
 	return 0;
 }
