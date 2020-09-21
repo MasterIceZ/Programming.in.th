@@ -1,0 +1,1 @@
+{"group":"local","interactive":false,"local":true,"memoryLimit":1024,"name":"Local: gcd","srcPath":"/mnt/c/Users/User/Documents/GitHub/Programming.in.th/codecube/gcd.cpp","tests":[{"id":1599454663353,"input":"12\n8","output":"4"}],"timeLimit":3000,"url":"/mnt/c/Users/User/Documents/GitHub/Programming.in.th/codecube/gcd.cpp"}
